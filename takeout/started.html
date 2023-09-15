@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Getting Started with Takeout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+      body {font-size: 16px;}
+      img {margin-bottom: -8px;}
+      .mySlides {display: none;}
+    </style>
+  </head>
+  <body class="w3-content w3-black" style="max-width:1500px;">
+    <div class="w3-padding-32 w3-white">
+      <div class="w3-row-padding">
+	<div class="w3-col l8 m6">
+	  <h1 class="w3-xxxlarge w3-text-green"><b>Getting Started</b></h1>
+	  <p>
+	    This page is a very brief introduction into setting up Takeout. It
+	    is assumed you are fairly technical, familiar with many existing
+	    tools, command line savvy, and have media in the required formats and
+	    containers.
+	  </p>
+	</div>
+	<div class="w3-col l4 m6">
+	  <a href="/">
+	  <img src="img/logo.svg" class="w3-image w3-right w3-hide-small" width="260" height="260">
+	  </a>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-24 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col">
+	  <h1 class="w3-xxlarge w3-text-black"><b>Setup Your Media</b></h1>
+	  <p>
+	    You need to have all your media stored in an S3-compatible service.
+	    Many options are available, including Wasabi, Backblaze, AWS, and
+	    Minio for local use.
+	  </p>
+
+	  <p>
+	    <a href="https://rclone.org/">rclone</a> and other tools are available
+	    to help transfer and manage files in S3 services.
+	  </p>
+
+	  <hr>
+
+	  <h3>Music</h3>
+	  <p>
+	    In your S3 bucket, store all music with common path prefix. The
+	    following is recommended:
+	    <div class="w3-code">
+	      bucket/prefix/artist/album/track
+	    </div>
+	    A complete example would be:
+	    <div class="w3-code">
+	      MyBucket/Music/Herbie Hancock/Maiden Voyage/02-The Eye of the Hurricane.flac
+	    </div>
+	  </p>
+	  <p>
+	    Takeout uses artist, release, and track names from the S3 bucket
+	    objects to obtain metadata. Here are some naming guidelines to help
+	    match your media.
+	  </p>
+	  <p>
+	    <h4 class="w3-text-green">Album/Release naming:</h4>
+	    <table class="w3-table w3-striped w3-bordered">
+	      <tr><td>Maiden Voyage</td><td>Album title without year</td></tr>
+	      <tr><td>Maiden Voyage (1965)</td><td>Album title with year - recommended</td></tr>
+	    </table>
+	  </p>
+	  <p>
+	    <h4 class="w3-text-green">Track naming:</h4>
+	    <table class="w3-table w3-bordered w3-striped">
+	      <tr><td>1-track.mp3</td><td>Track #1 on a single disc album</td></tr>
+	      <tr><td>01-track.mp3</td><td>Track #1 on a single disc album</td></tr>
+	      <tr><td>2-track.mp3</td><td>Track #2 on a single disc album</td></tr>
+	      <tr><td>13-track.mp3</td><td>Track #13 on a single disc album</td></tr>
+	      <tr><td>1-01-track.mp3</td><td>Track #1 on a multi-disc album</td></tr>
+	      <tr><td>1-13-track.mp3</td><td>Track #13 on a multi-disc album</td></tr>
+	    </table>
+	  </p>
+	  <p>
+	    Use underscore (_) for any special characters not typically found in
+	    file names. <a href="https://picard.musicbrainz.org/">Picard</a> is an
+	    excellent music tagger and handles file naming very well.
+	    <br>mp3, flac, ogg, and m4a file extensions are supported.
+	  </p>
+	  <hr>
+	  <h3>Movies</h3>
+	  <p>
+	    You should store all movies under a common path prefix. The following
+	    is recommended:
+	    <div class="w3-code">
+	      bucket/prefix/path/movie
+	    </div>
+	    An example would be:
+	    <div class="w3-code">
+	      MyBucket/Movies/Horror/Night of the Living Dead (1968).mkv
+	    </div>
+	  </p>
+	  <p>
+	    <h4 class="w3-text-green">Movie naming:</h4>
+	    <table class="w3-table w3-bordered w3-striped">
+	      <tr><td>Title (year).mkv</td><td>Title and year in mkv container</td></tr>
+	      <tr><td>Title (year) - HD.mkv</td><td>Same with optional and ignored text after and including they dash</td></tr>
+	    </table>
+	  </p>
+	  <p>
+	    The title and year are used to obtain movie metadata.
+	    <br>mkv and mp4 file extensions are supported.
+	  </p>
+	  <hr>
+	  <h3>Radio &amp; Podcasts</h3>
+	  <p>
+	    Internet radio and podcasts are media stored on other systems.
+	    Enable these inside media configuration files.
+	  </p>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-16 w3-white">
+    </div>
+
+    <div class="w3-padding-24 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col">
+	  <h1 class="w3-xxlarge w3-text-black"><b>Install and Configure the Server</b></h1>
+	  <p>
+	    Install the latest version of the server:
+	  </p>
+	  <div class="w3-code">
+	    $ go install github.com/takeoutfm/takeout/cmd/takeout@latest
+	  </div>
+	  <hr>
+	  <p>
+	    Create your server <a href="#">takeout.yaml</a> configuration file
+	    and specify directories for DataDir, MediaDir, and
+	    ImageCache.CacheDir. The table below includes the the configuration
+	    items that may need to be changed or have no defaults and must be
+	    specified.
+	    <table class="w3-table w3-bordered w3-striped">
+	      <tr><th>Name</th><th>Description</th><th>Default</th></tr>
+	      <tr><td>Server.DataDir</td><td>Server directory for databases</td><td>.</td></tr>
+	      <tr><td>Server.MediaDir</td><td>Server directory for media configs</td><td>.</td></tr>
+	      <tr><td>ImageClient.CacheDir</td><td>Image cache directory</td><td>./imagecache</td></tr>
+	      <tr><td>Auth.AccessToken.Secret</td><td>Example: 3foE3qLxN+koIGdt</td><td>n/a</td></tr>
+	      <tr><td>Auth.MediaToken.Secret</td><td>-</td><td>n/a</td></tr>
+	      <tr><td>Auth.CodeToken.Secret</td><td>-</td><td>n/a</td></tr>
+	    </table>
+	    <blockquote class="w3-panel w3-leftbar w3-white">
+	      The rest of the page assumes that defaults are used and that the
+	      server is running in /var/lib/takeout which would be
+	      &quot;.&quot; (current directory).
+	      Ensure you generate your own random secrets (min 16 bytes) for all
+	      token secrets and keep them secret. The command below can help.
+	      <div class="w3-code">
+		$ openssl rand -base64 12
+	      </div>
+	    </blockquote>
+	  <p>
+	    Create your media directories in MediaDir and within each one,
+	    create a <a href="#">config.yaml</a> with bucket(s) and other
+	    configuration.
+	  </p>
+	  <p>
+	    Takeout requires API keys to obtain certain metadata. For TMDB and
+	    Fanart, defaults are provided. For lastfm, <b>you must obtain your own</b>.
+	  </p>
+	  <table class="w3-table w3-bordered w3-striped">
+	    <tr><th>Name</th><th>Description</th><th>Default</th></tr>
+	    <tr><td>Lastfm.Key</td><td>Your lastfm key</td><td>n/a</td></tr>
+	    <tr><td>Lastfm.Secret</td><td>Your lastfm secret</td><td>n/a</td></tr>
+	    <tr><td>TMDB.Key</td><td>TMDB API Key</td><td>provided</td></tr>
+	    <tr><td>Fanart.ProjectKey</td><td>Fanart Key</td><td>provided</td></tr>
+	  </table>
+	  <p>
+	    Summary of commands to create a media directory with a config file.
+	    <div class="w3-code">
+	      $ cd /var/lib/takeout<br>
+	      $ mkdir mymedia<br>
+	      $ cd mymedia<br>
+	      $ vi config.yaml<br>
+	    </div>
+	    The server will use the media directory to store databases and
+	    search indices. You will see something like this after a sync.
+	    <div class="w3-code">
+	      config.yaml<br>
+	      music.bleve/<br>
+	      music.db<br>
+	      podcast.bleve/<br>
+	      podcast.db<br>
+	      video.bleve/<br>
+	      video.db<br>
+	    </div>
+	  </p>
+	  <hr>
+	  <h4 class="w3-text-green">Users</h4>
+	  <p>
+	    Create a user with associated media directory. A user is mapped to a
+	    media configuration.
+	  </p>
+	  <div class="w3-code">
+	    $ cd /var/lib/takeout<br>
+	    $ takeout user --add --media=mymedia --user=ozzy --pass=changeme
+	  </div>
+	  <hr>
+	  <h4 class="w3-text-green">Web Server &amp; TLS</h4>
+	  <p>
+	    Setup <a href="https://www.nginx.com/">Nginx</a> with TLS
+	    using <a href="https://letsencrypt.org/">Let&apos;s Encrypt</a>. This
+	    setup will vary depending on your needs and there are many other
+	    options as well. It is recommended to have a TLS upstream service that
+	    services requests for the takeout server listening on a port such as
+	    3000.
+	  </p>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-16 w3-white">
+    </div>
+
+    <div class="w3-padding-24 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col">
+	  <h1 class="w3-xxlarge w3-text-black"><b>Sync Media Metadata</b></h1>
+	  <p>
+	    For each media directory, do the first sync to obtain all the
+	    associated metadata for music, video, and podcasts. This can later be
+	    setup to run automatically. A full sync may take a long time depending
+	    on the amount of media files.
+	  </p>
+	  <div class="w3-code">
+	    $ cd /var/lib/takeout/mymedia<br>
+	    $ takeout sync
+	  </div>
+	  <p>
+	    This is also a good time to create some radio stations.
+	  </p>
+	  <div class="w3-code">
+	    $ cd /var/lib/takeout/mymedia<br>
+	    $ takeout radio
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-16 w3-white">
+    </div>
+
+    <div class="w3-padding-24 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col">
+	  <h1 class="w3-xxlarge w3-text-black"><b>Start the Server</b></h1>
+	  <p>
+	    Start the server.
+	  </p>
+	  <div class="w3-code">
+	    $ cd /var/lib/takeout<br>
+	    $ takeout serve
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-16 w3-white">
+    </div>
+
+    <div class="w3-padding-24 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col">
+	  <h1 class="w3-xxlarge w3-text-black"><b>Next Steps</b></h1>
+	  <p>
+	    Install the mobile app, watch app, Android TV app, and the command
+	    line player. These are all available
+	    on <a href="https://github.com/takeoutfm/">Github</a>.
+	  </p>
+	</div>
+      </div>
+    </div>
+
+    <footer class="w3-container w3-padding-16 w3-white w3-center">
+      <div class="w3-row">
+	<div class="w3-col s2 w3-left-align">
+	  <p></p>
+	</div>
+	<div class="w3-col s8 w3-center">
+	  <p>
+	    &copy; 2023 defsub, <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>
+	  </p>
+	</div>
+	<div class="w3-col s2 w3-right-align">
+	  <p><a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	</div>
+      </div>
+    </footer>
+  </body>
+</html>

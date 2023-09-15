@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Takeout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+      body {font-size: 16px;}
+      img {margin-bottom: -8px;}
+      .mySlides {display: none;}
+    </style>
+  </head>
+  <body class="w3-content w3-black" style="max-width:1500px;">
+    <div class="w3-padding-32 w3-white">
+      <div class="w3-row-padding">
+	<div class="w3-col l8 m6">
+	  <h1 class="w3-xxxlarge w3-text-green"><b>Takeout your media</b></h1>
+	  <p><span class="w3-xlarge">Takeout is a free and open source media
+	    system</span>. You manage and stream your media on your own terms.
+	    Store your media at home or in the cloud, run the server anywhere,
+	    and create a media system that works best for you. Enjoy your media
+	    on your phone, desktop, television, and watch. All using free (as
+	    in freedom) software, without any restrictions or limits. Any fees
+	    for servers, media, storage, and egress are decided by you. <p/>
+	    Takeout software is distributed under the terms of
+	    the <a href="https://github.com/takeoutfm/takeout/blob/main/COPYING">GNU
+	    Affero General Public License 3.0</a>.
+	  </p>
+
+	  <a class="w3-button w3-light-grey w3-padding-large w3-section w3-hide-small" href="started.html">
+            Get started
+	  </a>
+
+	  <p>Available for
+	    <i class="fa fa-android w3-xlarge w3-text-green"></i>
+	    <i class="fa fa-apple w3-xlarge"></i>
+	    <i class="fa fa-linux w3-xlarge"></i>
+	    <i class="fa fa-windows w3-xlarge w3-text-blue"></i></p>
+	</div>
+	<div class="w3-col l4 m6">
+	  <img src="img/logo.svg" class="w3-image w3-right w3-hide-small" width="460" height="460">
+	  <div class="w3-center w3-hide-large w3-hide-medium">
+            <button class="w3-button w3-light-grey w3-padding-large">
+              Get started
+            </button>
+	    <p/>
+	    <img src="img/logo.svg" width="460" height="460">
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-padding-64 w3-light-grey">
+      <div class="w3-row-padding">
+	<div class="w3-col l4 m6 w3-padding-64 w3-center w3-display-container">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/watch_player.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/watch_release.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/watch_home.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/mobile_player.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/mobile_release.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/mobile_artist.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/auto_player.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/playout.png">
+	  <img class="mySlides w3-image" style="max-height:320px" height="320" src="images/mobile_movie.png">
+	  <div class="w3-center w3-display-middle" style="width:95%">
+	    <button class="w3-button w3-dark-grey w3-left" onclick="plusDivs(-1)">&#10094;</button>
+	    <button class="w3-button w3-dark-grey w3-right" onclick="plusDivs(1)">&#10095;</button>
+	  </div>
+	</div>
+	<div class="w3-col l8 m6">
+	  <h1 class="w3-xxxlarge w3-text-black"><b>Why Takeout?</b></h1>
+	  <p>
+	    <span class="w3-xlarge">Cloud...</span> This
+	    <a href="https://medium.com/@defsub/takeout-your-media-6ec4d7922450">Medium
+	      story</a> covers a lot of the background and reasons for creating
+	      Takeout. In summary, Takeout began as system designed to minimize
+	      the costs of creating your own personal media streaming service
+	      in the cloud. There are many excellent services (Jellyfin, Plex,
+	      and Kodi) that do similar things, however, they are more complex,
+	      have more features, and work best at home. (Takeout can run at
+	      home as well)
+	  </p>
+	  <p>
+	    <span class="w3-xlarge">Music...</span> Takeout is designed to be a
+	    music player that also supports video and podcasts. Live TV, DVR,
+	    books, photos, and media sharing are not design goals right now.
+	    Instead, more focus is put into generating great playlists based on
+	    extensive metadata, search capabilites and supporting multiple
+	    platforms. And except for Internet radio, anything can be
+	    downloaded for offline playback.
+	  </p>
+	  <p>
+	    <span class="w3-xlarge">Cross-platform...</span> Takeout is built
+	    using open source cross-platform technology. The server is written
+	    using <a href="https://go.dev/">Go</a> and can run on any platform.
+	    The server requires minimal resources making it ideal to run on a
+	    small VPS in the cloud. The apps are written
+	    using <a href="https://flutter.dev/">Flutter</a> and can run on
+	    Android, iOS, and Wear OS.
+	  </p>
+	</div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-padding-64 w3-dark-grey w3-center">
+      <h1 class="w3-jumbo"><b>Features</b></h1>
+
+      <p>Takeout supports music, radio, movies & podcasts across several
+	platforms. Browse, search, and create playlists using the Takeout
+	server and stream your media directly from your S3-compatible
+	storage.</p>
+
+      <div class="w3-row" style="margin-top:64px">
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-orange w3-jumbo">video_library</i>
+	  <p>Use S3-compatible storage</p>
+	</div>
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-blue w3-jumbo">cloud_queue</i>
+	  <p>Small & super-fast server<br>with metadata & search</p>
+	</div>
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-amber w3-jumbo">phone_android</i>
+	  <p>Stream media with offline<br>support & Android Auto</p>
+	</div>
+      </div>
+
+      <div class="w3-row" style="margin-top:64px">
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-cyan w3-jumbo">watch</i>
+	  <p>Stream from your wrist<br>with offline support</p>
+	</div>
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-white w3-jumbo">tv</i>
+	  <p>Stream on the big screen<br>with subtitle & track selection</p>
+	</div>
+	<div class="w3-col s4">
+	  <i class="material-icons w3-text-pink w3-jumbo">laptop</i>
+	  <p>Command line player with<br>retro ASCII art covers</p>
+	</div>
+      </div>
+    </div>
+
+    <footer class="w3-container w3-padding-16 w3-light-grey w3-center">
+      <div class="w3-row">
+	<div class="w3-col s2 w3-left-align">
+	  <p></p>
+	</div>
+	<div class="w3-col s8 w3-center">
+	  <p>
+	    &copy; 2023 defsub, <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>
+	  </p>
+	</div>
+	<div class="w3-col s2 w3-right-align">
+	  <p><a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	</div>
+      </div>
+    </footer>
+
+    <script>
+      // Slideshow
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+	  showDivs(slideIndex += n);
+      }
+
+      function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  if (n > x.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = x.length}
+	  for (i = 0; i < x.length; i++) {
+	      x[i].style.display = "none";
+	  }
+	  x[slideIndex-1].style.display = "inline";
+      }
+    </script>
+  </body>
+</html>
