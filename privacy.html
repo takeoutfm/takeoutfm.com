@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <title>Privacy Policy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+      body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+      body {font-size: 16px;}
+      img {margin-bottom: -8px;}
+    </style>
+  </head>
+  <body class="w3-content w3-black" style="max-width:1500px;">
+    <div class="w3-padding-32 w3-white">
+      <div class="w3-row-padding">
+	<h1 class="w3-xxxlarge w3-text-green"><b>Takeout Privacy Policy</b></h1>
+
+Takeout is a copyleft personal media system that may be entirely managed by the
+end user, a third-party, or a combination of the two. Privacy as it relates to
+the original intended design of Takeout, independent to how it is managed, is
+described within this document. Takeout refers to the Takeout server, mobile
+apps, watch apps, TV apps, desktop apps, and the web interface. If you have
+questions regarding this privacy policy, please
+contact <a href="mailto:privacy@takeoutfm.com">privacy@takeoutfm.com</a>.
+
+<h2>Design Considerations</h2>
+
+Takeout is designed around a server and APIs for clients/apps to browse and
+consume media. Clients are not required to store any information but may do so
+to improve performance. State information may be stored on the server such that
+activity and progress can be resumed or shared across multiple client devices.
+Takeout does not store or manage any media and instead media must be stored in
+an S3 bucket that is available for the server to index and for clients to
+access directly using time-based pre-signed URLs.
+
+<h2>Personal Information</h2>
+
+The Takeout server requires a username and password for each user to access
+related media and services. The usernames and passwords are stored in the
+server <i>auth</i> database. The username is stored in the clear and the password is
+stored with <a href="https://en.wikipedia.org/wiki/Scrypt">Scrypt</a>. No other
+personal information is requested or stored by Takeout.
+
+The Takeout server may temporarily store access logs that contain client
+request information and IP addresses. This information, if used, is only used
+for debugging or development purposes.
+
+The Takeout server is recommended to be configured with TLS to ensure all
+communication is encrypted to avoid unintended disclosure of usernames and
+passwords.
+
+<h2>Cookies</h2>
+
+Cookies are small tokens or files stored on your device as part of the user
+login process to uniquely identify you later without requiring you to provide
+your username and password again. Each cookie is a UUID comprised of 122 random
+bits, stored within the Takeout server <i>auth</i> database, and within the client
+app or web browser. Cookies are valid for a limited time (based on server
+configuration) and when expired, you will be required to login again.
+
+The Takeout server is recommended to be configured with TLS to ensure all
+communication is encrypted to avoid unintended disclosure of cookies.
+
+<h2>Tokens</h2>
+
+JSON Web Tokens (JWTs) are used by Takeout to manage access controls for API
+requests. Different types of tokens are used and the security controls for each
+can be configured in the Takeout server. Each token has an associated issuer,
+age, and secret. The Takeout username is stored as the JWT <i>subject</i>.
+Takeout uses signed and not encrypted JWTs, which means that the Takeout
+username is visible within the API call if TLS is not being used.
+
+The Takeout server is recommended to be configured with TLS to ensure all
+communication is encrypted to avoid unintended disclosure of tokens.
+
+Takeout clients store tokens as part of application storage which is protected
+by mobile operating systems as part of the application sandbox.
+
+<h2>Media</h2>
+
+The Takeout server requires access to your S3 bucket(s) to obtain a listing of
+media stored within the S3 bucket(s). The bucket object file names are used to
+obtain further metadata related to music and video files. These object names
+are stored in the corresponding <i>music</i>, <i>video</i> and <i>search</i> databases to
+enable media streaming or downloading directly from your S3 bucket(s) using
+time-based pre-signed URLs.
+
+The Takeout server does not access your media, it does not parse your media
+containers, and it does not parse any embedded tags or related information in
+your media. All related metadata is obtained using third-party services based
+on file naming conventions.  The Takeout server is not a source or provider of
+any music, video, or movie media.
+
+Media stored in your S3 bucket(s) can potentially be visible to the S3 bucket
+service provider. Contact your service provider to obtain further information
+regarding the S3 bucket privacy policy. Personal S3 bucket hosting options,
+such as <a href="https://min.io/">MinIO</a>, are available.
+
+<h2>Metadata</h2>
+
+The Takeout server uses the following services to discover your media metadata:
+
+<ul>
+<li><a href="https://coverartarchive.org/">Cover Art Archive</a> - obtain links to cover images
+<li><a href="https://fanart.tv/">Fanart.tv</a> - obtain links to Artist images (requires API key)
+<li><a href="https://musicbrainz.org/">MusicBrainz</a> - obtain music metadata
+<li><a href="https://www.last.fm/">Last.fm</a> - obtain popular tracks, artist name resolving (requires API key)
+<li><a href="https://www.themoviedb.org/">The Movie Database</a> - obtain movie metadata (requires API key)
+</ul>
+
+The Takeout server uses the respective service APIs to query and store related
+metadata based on your S3 bucket object file names. Requests to the service
+APIs will include an API key (where required), media information (such as
+artist or movie name), and the Takeout server IP address. Third-party services
+can infer information about your music or movies that are being indexed and
+potentially relate the media to a unique IP address. No other information is
+directly provided to these third-party services.
+
+Metadata related to your S3 bucket object file names is stored in the
+respective <i>music</i>, <i>video</i>, and <i>search</i> databases to improve performance and
+reduce the overall impact on third-party services. Similarly, API responses can
+also be cached to avoid repeated or duplicate requests for the same
+information.
+
+Metadata includes links or URLs to images such as covers, posters, and
+profiles. The Takeout server includes such URLs or information to construct
+URLs in responses to API clients. The URLs are used by clients to render
+associated media images in their UI. Third-party services can infer information
+about your media from image requests and relate to a unique IP address. No
+other information is directly provided to these third-party services. The
+Takeout server can also proxy all media image requests such that client IP
+addresses are not exposed to third-party services.
+
+Podcast URLs that have been added to the Takeout server configuration are
+periodically queried and metadata is stored in the <i>podcast</i> database. Requests
+to the podcast providers can infer information about your interests and
+potentially relate the podcasts to a unique IP address. No other information is
+directly provided to the podcast providers.
+
+Radio stream URLs that have been added to the Takeout server configuration are
+used to create a radio station in the <i>music</i> database. The URLs for these
+streams are sent directly to API clients and clients can use them to directly
+stream media. Requests to radio stream providers can infer information about
+your interests and potentially relate streams to a unique IP address. No other
+information is directly provided to the radio providers.
+
+<h2>Progress</h2>
+
+The Takeout server provides APIs for clients to store media watch/listen
+progress which is intended to allow playback to be conveniently resumed on the
+same or other devices at a later time. The Takeout server stores progress using
+the ETag (or entity tag) of the media and an offset in the media stream. An
+ETag is generally an MD5 digest of the media content obtained from the S3
+bucket. This design of ETag based progress provides a layer of indirection such
+that user media consumption is not readily available. It's possible, with
+access to the <i>progress</i> database and the S3 bucket, to reconstruct media
+consumption information by mapping progress ETags to S3 bucket media.
+
+<h2>Activity</h2>
+
+The Takeout server provides APIs for clients to store activity events which are
+intended to allow the user to easily access recently consumed media on the same
+or other devices. Activity events can relate to music, video, and podcasts.
+Activity events are stored in the <i>activity</i> database and each event uses
+third-party identifiers (MBIDs, GUIDs, IMDB IDs) such that activity data is
+stable. It's possible, with access to the <i>activity</i> database, to reconstruct
+media consumption information by mapping third-party identifiers to actual
+metadata.
+
+Activity APIs are still a work in progress.
+
+<h2>ListenBrainz</h2>
+
+Takeout apps can be configured to send <i>playing now</i> and <i>listens</i> to
+ListenBrainz. This is optional but when configured, ListenBrainz will be made
+aware of music artist, release, and track listening behavior. With this
+information ListenBrainz can infer information about your music and other
+information. ListenBrainz also can make this information available publicly on
+their website and in other data exports. Please consult the ListenBrainz site
+and their privacy policy for further information.
+
+<h2>Information Disclosure</h2>
+
+The Takeout server does not directly disclose any information to any outside
+parties beyond what is needed to obtain metadata.
+
+<h2>Children’s Online Privacy Protection Act Compliance</h2>
+
+Takeout is directed at people that are 13 years old or older. If the Takeout
+server is in the USA, and you are under age of 13, per the requirements of
+COPPA (Children’s Online Privacy Protection Act), do not use the Takeout
+server.
+
+<h2>Google Assistant</h2>
+
+The Takeout server can optionally be used with Google Assistant enabled devices
+and apps. A cookie is used to link your Google Assistant user to your Takeout
+user.  The cookie is stored in your Google Assistant [user
+storage](https://developers.google.com/assistant/conversational/storage-user).
+This process requires you to enable voice match, personal results, and web &
+app activity. See the corresponding Google privacy policy for information
+regarding these settings.
+
+Phrases you use with Google Assistant to access the Takeout server are processed
+by the Assistant, sent to Google services, and finally to the Takeout server
+webhook where they are processed as text strings contained within intents and
+parameters. The webhook will respond to Google services with media metadata and
+time-based pre-signed URLs for the Assistant to access your media.
+
+The Takeout server does not store or have access to your voice data. The
+resulting translated text queries, intents, and parameters are not stored by
+Takeout however they may be used for debugging purposes. Only voice matched
+authenticated requests from the Google Assistant are allowed to access your
+media and metadata.
+
+<h2>Consent</h2>
+
+By using Takeout, you consent to this privacy policy.
+
+<h2>Changes</h2>
+
+Any changes made to this privacy policy will be made available in this file at
+<a href="https://takeoutfm.com/privacy.html">https://takeoutfm.com/privacy.html</a>.
+
+      </div>
+    </div>
+    <footer class="w3-container w3-padding-16 w3-light-grey w3-center">
+      <div class="w3-row">
+	<div class="w3-col s2 w3-left-align">
+	  <p></p>
+	</div>
+	<div class="w3-col s8 w3-center">
+	  <p>
+	    &copy; 2023 defsub, <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>
+	  </p>
+	</div>
+	<div class="w3-col s2 w3-right-align">
+	  <p><a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+	</div>
+      </div>
+    </footer>
+  </body>
+</html>
