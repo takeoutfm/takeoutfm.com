@@ -5,42 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"  </head>
-  <body>
-    <div class="w3-bar w3-theme">
-      <a href="/takeout/" class="w3-bar-item w3-button w3-padding-16">Takeout</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-16">listenbrainz_dart</a>
-      <a href="https://github.com/takeoutfm/" class="w3-bar-item w3-button w3-padding-16">Github</a>
-    </div>
-    <header class="w3-container w3-theme w3-padding">
-      <div class="w3-center">
-	<h4>Takeout your media, on your own terms, with free and open source software</h4>
-      </div>
-    </header>
-    <div class="w3-container">
-      <div class="w3-row">
-	<div class="w3-col l1"><p/></div>
-	<div class="w3-col l10">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+      body {font-size: 16px;}
+      img {margin-bottom: -8px;}
+    </style>
+  </head>
+  <body class="w3-content w3-black" style="max-width:1500px;">
+    <div class="w3-padding-32 w3-white">
+      <div class="w3-row-padding">
+	<div class="w3-col l8 m6">
+	  <h1 class="w3-xxxlarge w3-text-green"><b>TakeoutFM</b></h1>
 	  <p>
-	    Takeout is a free and open source media system that allows you
-	    manage and stream your media on your own terms. You can store your
-	    media at home or in the cloud, run the server anywhere, and create
-	    a media system that works best for you. Enjoy your media on your
-	    phone, desktop, television, and watch. All using free software,
-	    without any restrictions or limits. Any fees for servers, media,
-	    storage, and egress are decided by you.
+	    We are indie developers that build the free (as in freedom)
+	    software behind <a href="takeout.html">Takeout</a>. We use open
+	    source cross-plaform technology
+	    like <a href="https://go.dev/">Go<a>, <a href="https://flutter.dev/">Flutter</a>
+	    and <a href="https://dart.dev/">Dart</a> to support as many
+	    platforms as possible. All source code is available on
+	    our <a href="https://github.com/takeoutfm/">Github</a> page.
 	  </p>
 	  <p>
-	    Takeout software is available under the terms of
-	    the <a href="https://github.com/takeoutfm/takeout/blob/main/COPYING">GNU
-	    Affero General Public License 3.0</a>.
+	    Software is distributed under terms
+	    of <a href="https://www.gnu.org/licenses/licenses.html">GNU
+	    licenses</a>.
 	  </p>
+	  <div class="w3-padding-24 w3-row-padding w3-center">
+	    <a class="w3-button w3-light-grey w3-padding-large w3-section" href="takeout.html">
+              Get Takeout
+	    </a>
+	  </div>
 	</div>
-	<div class="w3-col l1"><p/></div>
+	<div class="w3-col l4 m6">
+	  <a href="/"><img src="images/logo.svg" class="w3-image w3-right w3-hide-small" width="460" height="460"></a>
+	  <div class="w3-center w3-hide-large w3-hide-medium">
+	    <a href="/"><img src="images/logo.svg" width="360" height="360"></a>
+	  </div>
+	</div>
       </div>
     </div>
-    <footer class="w3-container w3-theme-dark w3-padding-16 w3-margin-top">
+    <div class="w3-container w3-padding-64 w3-dark-grey">
+      <h1 class="w3-xxlarge"><b>Projects</b></h1>
+      <ul class="w3-hoverable">
+	<li><a href="https://github.com/takeoutfm/takeout/">Takeout server</a></li>
+	<li><a href="https://github.com/takeoutfm/takeout_app/tree/main/takeout_lib/">Takeout app library</a></li>
+	<li><a href="https://github.com/takeoutfm/takeout_app/tree/main/takeout_mobile/">Takeout for Android (and iOS)</a></li>
+	<li><a href="https://github.com/takeoutfm/takeout_app/tree/main/takeout_watch/">Takeout for Wear OS</a></li>
+	<li><a href="https://github.com/takeoutfm/takeout/">Takeout for Android TV</a></li>
+	<li><a href="https://github.com/takeoutfm/takeout/tree/main/cmd/playout">Takeout for desktop</a></li>
+	<li><a href="https://github.com/takeoutfm/listenbrainz_dart/">ListenBrainz API for Dart</a></li>
+	<li><a href="https://github.com/takeoutfm/cdmbz/">CDDB server powered by Musibrainz</a></li>
+      </ul>
+    </div>
+    <footer class="w3-container w3-padding-16 w3-light-grey w3-center">
       <div class="w3-row">
 	<div class="w3-col s2 w3-left-align">
 	  <p></p>
