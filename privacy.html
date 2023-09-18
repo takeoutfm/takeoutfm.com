@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <style>
       body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
@@ -40,12 +40,16 @@ access directly using time-based pre-signed URLs.
 The Takeout server requires a username and password for each user to access
 related media and services. The usernames and passwords are stored in the
 server <i>auth</i> database. The username is stored in the clear and the password is
-stored with <a href="https://en.wikipedia.org/wiki/Scrypt">Scrypt</a>. No other
+stored with <a href="https://en.wikipedia.org/wiki/Scrypt">scrypt</a>. No other
 personal information is requested or stored by Takeout.
+
+<p/>
 
 The Takeout server may temporarily store access logs that contain client
 request information and IP addresses. This information, if used, is only used
 for debugging or development purposes.
+
+<p/>
 
 The Takeout server is recommended to be configured with TLS to ensure all
 communication is encrypted to avoid unintended disclosure of usernames and
@@ -60,6 +64,8 @@ bits, stored within the Takeout server <i>auth</i> database, and within the clie
 app or web browser. Cookies are valid for a limited time (based on server
 configuration) and when expired, you will be required to login again.
 
+<p/>
+
 The Takeout server is recommended to be configured with TLS to ensure all
 communication is encrypted to avoid unintended disclosure of cookies.
 
@@ -72,8 +78,12 @@ age, and secret. The Takeout username is stored as the JWT <i>subject</i>.
 Takeout uses signed and not encrypted JWTs, which means that the Takeout
 username is visible within the API call if TLS is not being used.
 
+<p/>
+
 The Takeout server is recommended to be configured with TLS to ensure all
 communication is encrypted to avoid unintended disclosure of tokens.
+
+<p/>
 
 Takeout clients store tokens as part of application storage which is protected
 by mobile operating systems as part of the application sandbox.
@@ -87,11 +97,15 @@ are stored in the corresponding <i>music</i>, <i>video</i> and <i>search</i> dat
 enable media streaming or downloading directly from your S3 bucket(s) using
 time-based pre-signed URLs.
 
+<p/>
+
 The Takeout server does not access your media, it does not parse your media
 containers, and it does not parse any embedded tags or related information in
 your media. All related metadata is obtained using third-party services based
 on file naming conventions.  The Takeout server is not a source or provider of
 any music, video, or movie media.
+
+<p/>
 
 Media stored in your S3 bucket(s) can potentially be visible to the S3 bucket
 service provider. Contact your service provider to obtain further information
@@ -118,11 +132,15 @@ can infer information about your music or movies that are being indexed and
 potentially relate the media to a unique IP address. No other information is
 directly provided to these third-party services.
 
+<p/>
+
 Metadata related to your S3 bucket object file names is stored in the
 respective <i>music</i>, <i>video</i>, and <i>search</i> databases to improve performance and
 reduce the overall impact on third-party services. Similarly, API responses can
 also be cached to avoid repeated or duplicate requests for the same
 information.
+
+<p/>
 
 Metadata includes links or URLs to images such as covers, posters, and
 profiles. The Takeout server includes such URLs or information to construct
@@ -133,11 +151,15 @@ other information is directly provided to these third-party services. The
 Takeout server can also proxy all media image requests such that client IP
 addresses are not exposed to third-party services.
 
+<p/>
+
 Podcast URLs that have been added to the Takeout server configuration are
 periodically queried and metadata is stored in the <i>podcast</i> database. Requests
 to the podcast providers can infer information about your interests and
 potentially relate the podcasts to a unique IP address. No other information is
 directly provided to the podcast providers.
+
+<p/>
 
 Radio stream URLs that have been added to the Takeout server configuration are
 used to create a radio station in the <i>music</i> database. The URLs for these
@@ -168,6 +190,8 @@ third-party identifiers (MBIDs, GUIDs, IMDB IDs) such that activity data is
 stable. It's possible, with access to the <i>activity</i> database, to reconstruct
 media consumption information by mapping third-party identifiers to actual
 metadata.
+
+<p/>
 
 Activity APIs are still a work in progress.
 
@@ -203,11 +227,15 @@ This process requires you to enable voice match, personal results, and web &
 app activity. See the corresponding Google privacy policy for information
 regarding these settings.
 
+<p/>
+
 Phrases you use with Google Assistant to access the Takeout server are processed
 by the Assistant, sent to Google services, and finally to the Takeout server
 webhook where they are processed as text strings contained within intents and
 parameters. The webhook will respond to Google services with media metadata and
 time-based pre-signed URLs for the Assistant to access your media.
+
+<p/>
 
 The Takeout server does not store or have access to your voice data. The
 resulting translated text queries, intents, and parameters are not stored by
